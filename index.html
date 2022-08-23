@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>신도리코 FSA 설치 페이지</title>
+    <meta name="description" content="AIRLAB" />
+    <meta name="author" content="AIRLAB" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <style>
+      body,
+      html {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        /* overflow: auto; */
+      }
+
+      ul li {
+        margin-bottom: 10px;
+        line-height: 1.2em;
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+      }
+      .header {
+        width: 100%;
+        height: 60px;
+        padding: 10px 0;
+        text-align: center;
+      }
+      .wrapper {
+        width: calc(100% - 20px);
+        height: calc(100% - 160px);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+      }
+      .qr {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+        background-image: url(data:image/png;base64,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);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+      .info {
+        width: 100%;
+        height: 45px;
+        margin: 20px 0;
+        font-size: 18px;
+      }
+      .contents {
+        width: calc(100% - 30px);
+        height: 80px;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid lightgrey;
+        display: flex;
+        justify-content: space-between;
+      }
+      .icon-stage {
+        width: 80px;
+        height: 80px;
+        margin: 0;
+        background-image: url("./images/Icon.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        border-radius: 10px;
+      }
+      .name {
+        height: 5px;
+        color: black;
+      }
+      .version {
+        right: 10px;
+        color: grey;
+      }
+      .link_wrap {
+        display: block;
+        float: right;
+      }
+      .link {
+        width: 60px;
+        height: 40px;
+        position: relative;
+        top: 20px;
+        border-radius: 30px;
+        border-width: 0;
+        background-color: #2462f7;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        display: table-cell;
+      }
+      .link:hover {
+        background-color: #1677ff;
+      }
+      a.link {
+        color: #fff;
+        vertical-align: middle;
+      }
+
+      a:link.link {
+        color: #fff;
+        text-decoration: none;
+        vertical-align: middle;
+      }
+      a:visited.link {
+        color: #fff;
+      }
+      .title {
+      }
+      .download {
+        margin: 10px 10px 0;
+      }
+      .history {
+        margin: 10px 0;
+      }
+      .footer {
+        width: 100%;
+        height: 20px;
+        position: absolute;
+        bottom: 10px;
+        text-align: center;
+        color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <span><h2>신도리코 FSA - iOS앱 다운로드</h2></span>
+      </div>
+      <div class="wrapper">
+        <!-- <div class="qr"></div>
+        <div class="info"><b>2021-04-23 15:24</b><span> 업데이트 된 최신 버전의 IOS 셔클 라이더앱 입니다</span></div> -->
+        <div class="contents">
+          <div class="icon-stage"></div>
+          <div class="title">
+            <H4 class="name">FSA</H4>
+            <H4 class="version">최신(1.1.0)</H4>
+          </div>
+          <div class="link_wrap"><a class="link" href="itms-services://?action=download-manifest&amp;url=https://hmjo-hyundai.github.io/manifest/2.3.1/manifest-stage-155.plist" download>설치</a></div>
+        </div>
+        <div class="download">
+          <details>
+            <summary>이전 빌드</summary>
+            <p>
+              <p><a style="font-size: 1.2em;" href="itms-services://?action=download-manifest&amp;url=https://hmjo-hyundai.github.io/manifest/2.3.0/manifest-stage-05.plist">Stage 다운로드</a> stage 2.3.0.5</p>
+          </details>
+        </div>
+        <br/>
+        <div class="history">
+          <h3>변경사항</h3>
+          <h3 class="update">------ 2022년 8월 22일(1.0.0.4) -------</h3>
+            <p>appHistoryReset기능 추가 (개발모드)</p>
+          <h3 class="update">------ 2021년 4월 20일(2.2.0.3) -------</h3>
+            <p>탑승 리뷰 기능 추가</p>
+            <p>멤버십 관련 노티 랜딩 처</p>
+          <h3 class="update">------ 2021년 4월 16일(2.2.0.1) -------</h3>
+            <p>1.1.0 QA 스타트</p>
+        </div>
+      </div>
+      <div class="footer">
+        <span>Copyright by FSA</span>
+      </div>
+    </div>
+  </body>
+</html>
